@@ -11,3 +11,17 @@
 *.lai
 *.la
 *.a
+
+# TeX/LaTex output
+*.out
+*.toc
+*.pdf
+*.aux
+*.log
+
+# Erlang
+*.beam
+
+# other spcripts
+*.pyc
+*.pyo
