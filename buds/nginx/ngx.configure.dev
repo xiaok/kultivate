@@ -1,0 +1,39 @@
+#!/bin/sh
+
+#  LuaJIT:
+export LUAJIT_HOME=$HOME/programs/luajit
+export LUAJIT_LIB=$LUAJIT_HOME/lib
+export LUAJIT_INC=$LUAJIT_HOME/include/luajit-2.0
+
+# Lua:
+#export LUA_HOME=...
+#export LUA_LIB=$LUA_HOME/lib
+#export LUA_INC=$LUA_HOME/include
+
+export NGX_SRC=$HOME/Work/opensrc/nginx
+export NGX_DEST=$HOME/programs/nginx
+
+#  ### http modules ###
+#  --with-http_ssl_module             enable ngx_http_ssl_module
+#  --with-http_realip_module          enable ngx_http_realip_module
+#  --with-http_addition_module        enable ngx_http_addition_module
+#  --with-http_xslt_module            enable ngx_http_xslt_module
+#  --with-http_image_filter_module    enable ngx_http_image_filter_module
+#  --with-http_geoip_module           enable ngx_http_geoip_module
+#  --with-http_sub_module             enable ngx_http_sub_module
+#  --with-http_dav_module             enable ngx_http_dav_module
+#  --with-http_flv_module             enable ngx_http_flv_module
+#  --with-http_mp4_module             enable ngx_http_mp4_module
+#  --with-http_gzip_static_module     enable ngx_http_gzip_static_module
+#  --with-http_random_index_module    enable ngx_http_random_index_module
+#  --with-http_secure_link_module     enable ngx_http_secure_link_module
+#  --with-http_degradation_module     enable ngx_http_degradation_module
+#  --with-http_stub_status_module     enable ngx_http_stub_status_module
+
+$NGX_SRC/auto/configure --prefix=$NGX_DEST \
+                        --with-http_ssl_module \
+                        --with-http_realip_module \
+                        --with-http_realip_module \
+                        --add-module=$NGX_SRC/../ngx_modules/ngx_devel_kit \
+                        --add-module=$NGX_SRC/../ngx_modules/lua-nginx-module \
+                        --add-module=$NGX_SRC/../ngx_modules/ngx_postgres
