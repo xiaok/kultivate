@@ -1,0 +1,13 @@
+#!/bin/sh
+#./otp_build autoconf
+./configure --enable-threads --enable-kernel-poll \
+            --without-javac \
+            --with-ssl --enable-shared-zlib \
+            --with-dynamic-trace=systemtap  --enable-vm-probes \
+            --enable-hipe \
+            --enable-sctp \
+            --enable-smp-support \
+            --prefix=$HOME/programs/otp/develop
+
+# conflict with HiPE
+# --enable-halfword-emulator
