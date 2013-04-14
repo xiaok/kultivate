@@ -31,9 +31,20 @@ export NGX_DEST=$HOME/programs/nginx
 #  --with-http_stub_status_module     enable ngx_http_stub_status_module
 
 $NGX_SRC/auto/configure --prefix=$NGX_DEST \
+                        --with-debug \
                         --with-http_ssl_module \
                         --with-http_realip_module \
                         --with-http_realip_module \
                         --add-module=$NGX_SRC/../ngx_modules/ngx_devel_kit \
                         --add-module=$NGX_SRC/../ngx_modules/lua-nginx-module \
                         --add-module=$NGX_SRC/../ngx_modules/ngx_postgres
+
+
+# config:
+# worker_processes  1;
+# master_process  off;
+# daemon          off;
+# #error_log  logs/error.log;
+# #error_log  logs/error.log  debug;
+# #error_log  logs/error.log  notice;
+# #error_log  logs/error.log  info;
