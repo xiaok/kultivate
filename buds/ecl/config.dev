@@ -3,7 +3,7 @@
 export buildir=./build/dev
 export CC=gcc-4.4
 ./configure \
-    --prefix=/home/kdr2/programs/ecl \
+    --prefix=$HOME/programs/ecl \
     --with-system-gmp \
     --enable-threads \
     --with-x
