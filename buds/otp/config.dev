@@ -1,13 +1,22 @@
 #!/bin/sh
 #./otp_build autoconf
-./configure --enable-threads --enable-kernel-poll \
-            --without-javac \
-            --with-ssl --enable-shared-zlib \
-            --with-dynamic-trace=systemtap  --enable-vm-probes \
-            --enable-hipe \
+./configure --enable-threads --enable-smp-support \
+            --enable-kernel-poll \
             --enable-sctp \
-            --enable-smp-support \
+            --enable-hipe \
+            --with-dynamic-trace=systemtap  --enable-vm-probes \
+            --with-ssl --enable-shared-zlib \
+            --without-javac \
             --prefix=$HOME/programs/otp/develop
 
-# conflict with HiPE
+#-------------------------------------------------
+# other options:
+# #halfword, conflict with HiPE
 # --enable-halfword-emulator
+
+#-------------------------------------------------
+# For DEBUG:
+# cd $ERL_TOP/erts/emulator
+# make debug FLAVOR=(plain|smp)
+# run `$ERL_TOP/bin/cerl -debug'
+# gdb script:  $ERL_TOP/erts/etc/unix/etp-commands
