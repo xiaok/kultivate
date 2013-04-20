@@ -4,7 +4,11 @@
                       (*print-readably* #t))
         (let ((syms
                (filter ff (simple-sort (environment)))))
-          (princ syms)
+          (for-each (lambda (s)
+                      (princ "\t")
+                      (princ s)
+                      (princ "\n"))
+                    syms)
           (princ *linefeed*))))
 
 (princ "\nBUILTINS:\n")
