@@ -26,3 +26,11 @@
                                    (string (top-level-value s)))))
                   (not (memq s excludes))
                   (not (iostream? (top-level-value s)))))))
+
+(princ "\nMACROS:\n")
+(table.foldl (lambda (name y z)
+               (princ "\t")
+               (princ name)
+               (princ "\n"))
+             ()
+             *syntax-environment*)
