@@ -1,4 +1,2 @@
 #-*- mode: org -*-
-
-* Kultivate
-
+#+TITLE: Kultivate
