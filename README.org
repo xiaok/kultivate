@@ -1,2 +1,8 @@
 #-*- mode: org -*-
 #+TITLE: Kultivate
+* Kultivate
+* Layout
+** maps
+** pickaxes
+** buds
+** woods
