@@ -4,32 +4,33 @@
 * Kultivate Map
 
 * Lakes
-   - Linux Kernel
+  - Linux Kernel
 
 * Groves
-   - GCC
-   - LLVM
-   - PostgreSQL
-   - Erlang/OTP
-   - Nginx
-   - Lua/LuaJIT
-   - Julia
+  - GCC
+  - LLVM
+  - Erlang/OTP
+  - Lua/LuaJIT
+  - Julia
 
 * Giganteum
-   - Riak
-   - Redis
+  - PostgreSQL
+  - Nginx
+  - Riak
+  - Redis
 
 * Rivers
-   - Go
-   - Python
+  - Go
+  - Python
 
 * Shrublands
-   - CommonLisp
-   - Scheme
-   - Ruby
-   - Perl
+  - Scheme
+  - CommonLisp
+  - Ruby
+  - Perl
 
 * Lumbering Tools
-   - SystemTap
-   - GDB
-   - Valgrind
+  - Emacs
+  - SystemTap
+  - GDB
+  - Valgrind
