@@ -2,7 +2,8 @@
 #+TITLE: Kultivate
 * Kultivate
 * Layout
-** maps
-** pickaxes
-** buds
-** woods
+  - maps
+  - pickaxes
+  - badlands
+  - saplings
+  - woods

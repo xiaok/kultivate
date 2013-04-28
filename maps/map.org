@@ -1,0 +1,35 @@
+#+TITLE: Kultivate Map
+#+AUTHOR: KDr2
+
+* Kultivate Map
+
+* Lakes
+   - Linux Kernel
+
+* Groves
+   - GCC
+   - LLVM
+   - PostgreSQL
+   - Erlang/OTP
+   - Nginx
+   - Lua/LuaJIT
+   - Julia
+
+* Giganteum
+   - Riak
+   - Redis
+
+* Rivers
+   - Go
+   - Python
+
+* Shrublands
+   - CommonLisp
+   - Scheme
+   - Ruby
+   - Perl
+
+* Lumbering Tools
+   - SystemTap
+   - GDB
+   - Valgrind
