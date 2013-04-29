@@ -8,13 +8,23 @@ from a lisp prompt:
 NOTE: The content of this file must match the example in the
       documentation.
 |#
+
+#-:ecl
+(progn
+  (format t "ECL is the only supported implementation~C" #\Newline)
+  (quit))
+
 (setq ext:*help-message* "
-ecl-cmd usage:
-\t nothing
+ecl-cmd.exe usage:
+	ecl-cmd.exe arg1 arg2 ...
 ")
 
 (defun default-behaviour (args)
-  (format t "~A~%" args))
+  #+nil
+  (if (listp args)
+      (print "list!")
+      (print (type-of args)))
+  (format t "~S~%" args))
 
 (defconstant +ls-rules+
   '(("--help" 0 (progn (princ ext:*help-message* *standard-output*) (ext:quit 0)))
@@ -26,4 +36,8 @@ ecl-cmd usage:
     (error (c)
       (princ ext:*help-message* *error-output*)
       (ext:quit 1))))
+
+(if (<= (length (si::command-args)) 1)
+    (progn (princ ext:*help-message* *standard-output*)
+           (ext:quit 0)))
 (ext:quit 0)
