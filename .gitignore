@@ -26,3 +26,9 @@
 # other spcripts
 *.pyc
 *.pyo
+
+#luajit
+*.dasc.h
+*.dasc.c
+*.dash.h
+*.dash.c
