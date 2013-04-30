@@ -7,14 +7,15 @@ extern void initjit(dasm_State **state, const void *actionlist);
 extern void *jitcode(dasm_State **state);
 extern void free_jitcode(void *code);
 
-static int test(int num){
+static long test(long num){
     dasm_State *state;
     initjit(&state, actions);
-    |  mov eax, num
+    |  mov64 rax, num
+    |  add rax, rdi
     |  ret
 
-    int (*fptr)() = jitcode(&state);
-    int ret = fptr();
+    int (*fptr)(long) = jitcode(&state);
+    int ret = fptr(3);
     return ret;
 }
 
