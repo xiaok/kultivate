@@ -2,14 +2,18 @@
 #-*- sh -*-
 
 export LLVM_TOP=$HOME/Work/opensrc/llvm
-export BUILD_TOP=$LLVM_TOP/buil
+export BUILD_TOP=$LLVM_TOP/build
 export DIST_TOP=$HOME/programs/llvm
 
 #use gcc 4.4!
 export CC=gcc-4.4
 export CXX=g++-4.4
 
-export VERSION=v3.2
+if [ X$VERSION = X ]
+then
+    # default version
+    export VERSION=v3.2
+fi
 
 mkdir -p $BUILD_TOP/$VERSION
 cd $BUILD_TOP/$VERSION
