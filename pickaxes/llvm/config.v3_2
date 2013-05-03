@@ -1,0 +1,3 @@
+#!/bin/sh
+export VERSION=v3.2
+source $(dirname $0)/config-common.sh
