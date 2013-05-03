@@ -19,6 +19,10 @@ mkdir -p $BUILD_TOP/$VERSION
 cd $BUILD_TOP/$VERSION
 
 $LLVM_TOP/configure --prefix=$DIST_TOP/$VERSION \
-    --enable-doxygen \
     --enable-targets=host,x86,x86_64,arm \
-    --enable-shared
+    --enable-shared \
+    $@
+
+#other options:
+# --enable-optimized # -or-> make ENABLE_OPTIMIZED=1
+# --enable-doxygen \

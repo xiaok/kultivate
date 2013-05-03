@@ -1,3 +1,3 @@
 #!/bin/sh
 export VERSION=dev
-sh $(dirname $0)/config-common.sh
+sh $(dirname $0)/config-common.sh $@
