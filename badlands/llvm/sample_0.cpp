@@ -1,11 +1,14 @@
 //
 //
 // these macros are defined in cxxflags by llvm-config
-//#define __STDC_LIMIT_MACROS
-//#define __STDC_CONSTANT_MACROS
+// #define __STDC_LIMIT_MACROS
+// #define __STDC_CONSTANT_MACROS
 //
 
 #include <llvm/Config/config.h>
+
+#if LLVM_VERSION <= 32
+
 #include <llvm/LLVMContext.h>
 #include <llvm/Module.h>
 #include <llvm/DerivedTypes.h>
@@ -16,20 +19,35 @@
 #include <llvm/BasicBlock.h>
 #include <llvm/Instructions.h>
 #include <llvm/InlineAsm.h>
-#include <llvm/Support/FormattedStream.h>
-#include <llvm/Support/MathExtras.h>
+#include <llvm/Attributes.h>
+
+#else
+
+#include <llvm/IR/LLVMContext.h>
+#include <llvm/IR/Module.h>
+#include <llvm/IR/DerivedTypes.h>
+#include <llvm/IR/Constants.h>
+#include <llvm/IR/GlobalVariable.h>
+#include <llvm/IR/Function.h>
+#include <llvm/IR/CallingConv.h>
+#include <llvm/IR/BasicBlock.h>
+#include <llvm/IR/Instructions.h>
+#include <llvm/IR/InlineAsm.h>
+#include <llvm/IR/Attributes.h>
+
+#endif
+
 #include <llvm/Pass.h>
 #include <llvm/PassManager.h>
 #include <llvm/ADT/SmallVector.h>
+#include <llvm/Support/FormattedStream.h>
+#include <llvm/Support/MathExtras.h>
+#include <llvm/Support/TargetSelect.h>
 #include <llvm/Analysis/Verifier.h>
 #include <llvm/Assembly/PrintModulePass.h>
 #include <llvm/ExecutionEngine/ExecutionEngine.h>
 #include <llvm/ExecutionEngine/GenericValue.h>
 #include <llvm/ExecutionEngine/Interpreter.h>
-
-#include <llvm/Support/TargetSelect.h>
-
-#include <llvm/Attributes.h>
 
 #include <unistd.h>
 #include <cstdio>
@@ -69,7 +87,12 @@ int main(int argc, char**argv) {
 Module* makeLLVMModule() {
     // Module Construction
     Module* mod = new Module("/tmp/sample1.c", getGlobalContext());
-    mod->setDataLayout("e-p:64:64:64-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f32:32:32-f64:64:64-v64:64:64-v128:128:128-a0:0:64-s0:64:64-f80:128:128-n8:16:32:64-S128");
+    mod->setDataLayout(
+        "e-"
+        "p:64:64:64-"
+        "i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-"
+        "f32:32:32-f64:64:64-v64:64:64-v128:128:128-"
+        "a0:0:64-s0:64:64-f80:128:128-n8:16:32:64-S128");
     mod->setTargetTriple("x86_64-unknown-linux-gnu");
 
     // Type Definitions
@@ -110,6 +133,12 @@ Module* makeLLVMModule() {
     ab.addAttribute(Attributes::ReadNone);
     ab.addAttribute(Attributes::UWTable);
     func_factorial_PAL.addAttr(mod->getContext(), 4294967295U, Attributes::get(mod->getContext(), ab));
+    func_factorial->setAttributes(func_factorial_PAL);
+#elif LLVM_VERSION >= 33
+    AttributeSet func_factorial_PAL;
+    func_factorial_PAL.addAttrbute(mod->getContext(), 4294967295U, Attribute::NoUnwind);
+    func_factorial_PAL.addAttrbute(mod->getContext(), 4294967295U, Attribute::ReadNone);
+    func_factorial_PAL.addAttrbute(mod->getContext(), 4294967295U, Attribute::UWTable);
     func_factorial->setAttributes(func_factorial_PAL);
 #else
 #error "Bad LLVM Version"
