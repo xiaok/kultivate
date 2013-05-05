@@ -34,6 +34,7 @@
 #include <llvm/IR/Instructions.h>
 #include <llvm/IR/InlineAsm.h>
 #include <llvm/IR/Attributes.h>
+#include <llvm/ExecutionEngine/MCJIT.h>
 
 #endif
 
@@ -48,11 +49,13 @@
 #include <llvm/ExecutionEngine/ExecutionEngine.h>
 #include <llvm/ExecutionEngine/GenericValue.h>
 #include <llvm/ExecutionEngine/Interpreter.h>
+#include <llvm/ExecutionEngine/JITMemoryManager.h>
 
 #include <unistd.h>
 #include <cstdio>
 #include <vector>
 #include <algorithm>
+
 using namespace llvm;
 
 
@@ -61,23 +64,42 @@ Function* func_factorial;
 
 int main(int argc, char**argv) {
     InitializeNativeTarget();
+    InitializeNativeTargetAsmPrinter();
     Module* Mod = makeLLVMModule();
     verifyModule(*Mod, PrintMessageAction);
     PassManager PM;
     PM.add(createPrintModulePass(&outs()));
     PM.run(*Mod);
-
     //ExecutionEngine *exe=::llvm::Interpreter::create(Mod);
-    ExecutionEngine *exe = EngineBuilder(Mod).create();
+    //ExecutionEngine *exe = EngineBuilder(Mod).create();
+    //printf("----%p\n",exe);
+    EngineBuilder eb = EngineBuilder(Mod);
+
+#if LLVM_VERSION >= 33
+    eb.setEngineKind(EngineKind::JIT);
+    eb.setJITMemoryManager(JITMemoryManager::CreateDefaultMemManager());
+    eb.setAllocateGVsWithCode(false);
+    eb.setOptLevel(CodeGenOpt::Aggressive);
+    eb.setCodeModel(CodeModel::JITDefault);
+#endif
+
+    eb.setMArch("x86-64");
+    eb.setMCPU("corei7-avx");
+    eb.setUseMCJIT(true);
+    ExecutionEngine *exe = eb.create();
 
     std::vector<GenericValue> args;
     GenericValue GVArgc;
     GVArgc.IntVal = APInt(32, 24);
     args.push_back(GVArgc);
     //printf("xxxx:%p,%p\n",func_factorial,(void*)(&exe->runFunction));
-    GenericValue ret=exe->runFunction(func_factorial,args);
+    GenericValue ret=exe->runFunction(func_factorial, args);
     printf("ret=%llu\n",ret.IntVal.getZExtValue());
+
+#if LLVM_VERSION < 33
     exe->freeMachineCodeForFunction(func_factorial);
+#endif
+
     delete exe;
     //llvm_shutdown();
     return 0;
@@ -136,9 +158,9 @@ Module* makeLLVMModule() {
     func_factorial->setAttributes(func_factorial_PAL);
 #elif LLVM_VERSION >= 33
     AttributeSet func_factorial_PAL;
-    func_factorial_PAL.addAttrbute(mod->getContext(), 4294967295U, Attribute::NoUnwind);
-    func_factorial_PAL.addAttrbute(mod->getContext(), 4294967295U, Attribute::ReadNone);
-    func_factorial_PAL.addAttrbute(mod->getContext(), 4294967295U, Attribute::UWTable);
+    func_factorial_PAL.addAttribute(mod->getContext(), 4294967295U, Attribute::NoUnwind);
+    func_factorial_PAL.addAttribute(mod->getContext(), 4294967295U, Attribute::ReadNone);
+    func_factorial_PAL.addAttribute(mod->getContext(), 4294967295U, Attribute::UWTable);
     func_factorial->setAttributes(func_factorial_PAL);
 #else
 #error "Bad LLVM Version"
