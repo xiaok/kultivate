@@ -1,9 +1,15 @@
 #!/bin/sh
 
-export PGSRC_ROOT=$HOME/Work/opensrc/postgres
-export PREFIX=$HOME/programs/postgres/v92
+if [ X$PG_SRC_ROOT = X ]; then
+    export PG_SRC_ROOT=$HOME/Work/opensrc/postgres
+fi
 
-cd $PGSRC_ROOT/build/v9.2
-$PGSRC_ROOT/configure --prefix=$PREFIX \
+if [ X$PG_DEST_DIR = X ]; then
+    export PG_DEST_DIR=$HOME/programs/postgres
+fi
+
+mkdir -p $PG_SRC_ROOT/build/v9.2
+cd $PG_SRC_ROOT/build/v9.2
+$PG_SRC_ROOT/configure --prefix=$PG_DEST_DIR/v92 \
     --with-openssl --with-libxml --with-libxslt \
     --enable-debug --enable-profiling
