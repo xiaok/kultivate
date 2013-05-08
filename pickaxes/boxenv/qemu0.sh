@@ -1,5 +1,13 @@
 # Develop Env Setup for QEMU-VM
 
+export PATH=/data0/usr/bin:$PATH
+export LD_LIBRARY_PATH=/data0/usr/lib
+for p in `ls /data0/usr/local`; do
+    if [ -d /data0/usr/local/$p/lib ]; then
+        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data0/usr/local/$p/lib
+    fi
+done
+
 export SOURCE_ROOT=/data0/source
 export DEST_USR=/data0/usr
 export DEST_LOCAL=$DEST_USR/local
