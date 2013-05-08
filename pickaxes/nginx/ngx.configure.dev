@@ -1,7 +1,10 @@
 #!/bin/sh
 
 #  LuaJIT:
+if [ X$LUAJIT_HOME = X ]; then
 export LUAJIT_HOME=$HOME/programs/luajit
+fi
+
 export LUAJIT_LIB=$LUAJIT_HOME/lib
 export LUAJIT_INC=$LUAJIT_HOME/include/luajit-2.0
 
@@ -9,9 +12,13 @@ export LUAJIT_INC=$LUAJIT_HOME/include/luajit-2.0
 #export LUA_HOME=...
 #export LUA_LIB=$LUA_HOME/lib
 #export LUA_INC=$LUA_HOME/include
-
+if [ X$NGX_SRC = X ]; then
 export NGX_SRC=$HOME/Work/opensrc/nginx
+fi
+
+if [ X$NGX_DEST = X ]; then
 export NGX_DEST=$HOME/programs/nginx
+fi
 
 #  ### http modules ###
 #  --with-http_ssl_module             enable ngx_http_ssl_module
