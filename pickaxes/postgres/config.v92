@@ -1,0 +1,9 @@
+#!/bin/sh
+
+export PGSRC_ROOT=$HOME/Work/opensrc/postgres
+export PREFIX=$HOME/programs/postgres/v92
+
+cd $PGSRC_ROOT/build/v9.2
+$PGSRC_ROOT/configure --prefix=$PREFIX \
+    --with-openssl --with-libxml --with-libxslt \
+    --enable-debug --enable-profiling
