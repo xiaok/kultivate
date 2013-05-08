@@ -2,7 +2,7 @@
 
 export SOURCE_ROOT=/data0/source
 export DEST_USR=/data0/usr
-export DEST_LOCAL=/datt0/usr/local
+export DEST_LOCAL=$DEST_USR/local
 
 # LuaJIT
 export LUAJIT_SRC=$SOURCE_ROOT/lua
