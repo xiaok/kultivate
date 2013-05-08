@@ -10,4 +10,4 @@ export NGX_DEST=$HOME/programs/nginx
 
 #LLVM
 export LLVM_SRC_TOP=$HOME/Work/opensrc/llvm
-export LLVM_DEST_TOP=$HOME/Work/programs/llvm
+export LLVM_DEST_TOP=$HOME/programs/llvm
