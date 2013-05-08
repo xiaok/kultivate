@@ -11,3 +11,7 @@ export LUAJIT_HOME=$DEST_LOCAL/luajit
 # Nginx
 export NGX_SRC=$SOURCE_ROOT/nginx
 export NGX_DEST=$DEST_LOCAL/nginx
+
+#LLVM
+export LLVM_SRC_TOP=$SOURCE_ROOT/llvm
+export LLVM_DEST_TOP=$DEST_LOCAL/llvm

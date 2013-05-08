@@ -1,3 +1,3 @@
 #!/bin/sh
-export VERSION=v3.2
+export LLVM_VERSION=v3.2
 sh $(dirname $0)/config-common.sh $@
