@@ -1,0 +1,31 @@
+
+basic:
+  arch: "x64" # x86, x64|x86_64, arm
+  kvm: true
+  smp: 4
+  mem: 1024
+
+kernel:
+  outside: false
+  image: '/path/to/bzImage'
+  append:
+    - 'root=/dev/sda1'
+
+hdd:
+  hda: "debian64-with-kernel-12G.qcow2"
+  hdb: "data0.qcow2"
+
+net:
+  - "nic,macaddr=42:44:00:00:00:00"
+  - "tap,ifname=tap1,script=no"
+  #- "user"
+
+gdb:
+  enable: false
+  tcp: 0.0.0.0:4321
+
+
+misc:
+  curses: true
+  nographic: false
+  usb: true
