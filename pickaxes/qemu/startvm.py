@@ -75,7 +75,7 @@ def parse_config(config):
         ret.append("-kernel")
         ret.append(k.get("image"))
         ret.append("-append")
-        ret.append(k.get("append"))
+        ret.append(" ".join(k.get("append", [])))
 
     #gdb
     gdb = config.get("gdb", {})

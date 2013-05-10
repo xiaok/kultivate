@@ -1,4 +1,6 @@
 #!/bin/sh
+#-*- sh -*-
+
 #./otp_build autoconf
 ./configure --enable-threads --enable-smp-support \
             --enable-kernel-poll \

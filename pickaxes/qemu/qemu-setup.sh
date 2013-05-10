@@ -14,15 +14,15 @@ if [ X$QEMU_HDD = X ]; then
     export QEMU_HDD=$HDD_DEBIAN64
 fi
 
-#export DEFAULT_NET_OPT="-net nic,macaddr=52:54:00:12:34:56 -net tap,ifname=tap0,script=no" #-net user"
-export DEFAULT_NET_OPT="-net nic,macaddr=52:54:00:12:34:57 -net tap,ifname=tap0,script=no" #-net user"
+export DEFAULT_NET_OPT="-net nic,macaddr=52:54:00:12:34:56 -net tap,ifname=tap1,script=no"
+#export DEFAULT_NET_OPT="-net nic,macaddr=52:54:00:12:34:57 -net tap,ifname=tap0,script=no"
 #export DEFAULT_NET_OPT="-net nic,macaddr=52:54:00:12:34:56 -net user"
 #export DEFAULT_NET_OPT="-net nic,macaddr=52:54:00:12:34:57 -net user"
 
 export BUILD_DIR_QEMU_36=/opt/kernel/build/3.6-qemu/build
 export X86_IMAGE=arch/x86/boot/bzImage
 
-$QEMU_X64 -enable-kvm -m 1024 $GDB_OPT \
+$QEMU_X64 -enable-kvm -smp 4 -m 1024 $GDB_OPT \
     -kernel $BUILD_DIR_QEMU_36/$X86_IMAGE  \
     -hda $QEMU_HDD -append "root=/dev/sda1" \
     $DEFAULT_NET_OPT
