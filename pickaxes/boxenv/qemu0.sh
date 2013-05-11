@@ -19,6 +19,8 @@ export LUAJIT_HOME=$DEST_LOCAL/luajit
 # Nginx
 export NGX_SRC=$SOURCE_ROOT/nginx
 export NGX_DEST=$DEST_LOCAL/nginx
+export PATH=$PATH:$NGX_DEST/sbin
+export LUA_CPATH=$LUA_CPATH\;/usr/lib/x86_64-linux-gnu/lua/5.1/?.so
 
 #LLVM
 export LLVM_SRC_TOP=$SOURCE_ROOT/llvm
