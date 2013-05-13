@@ -12,6 +12,7 @@
   - Erlang/OTP
   - Lua/LuaJIT
   - Julia
+  - R
 
 * Giganteum
   - PostgreSQL
@@ -20,16 +21,17 @@
   - Redis
 
 * Rivers
+  - TeX/LaTex
   - Python
-
-* Junks
-  - Go
 
 * Shrublands
   - Scheme
   - CommonLisp
-  - Ruby
   - Perl
+  - Ruby
+
+* Junks
+  - Go
 
 * Lumbering Tools
   - Emacs
