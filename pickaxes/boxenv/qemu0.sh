@@ -22,10 +22,10 @@ export NGX_DEST=$DEST_LOCAL/nginx
 export PATH=$PATH:$NGX_DEST/sbin
 export LUA_CPATH=$LUA_CPATH\;/usr/lib/x86_64-linux-gnu/lua/5.1/?.so
 
-#LLVM
+# LLVM
 export LLVM_SRC_TOP=$SOURCE_ROOT/llvm
 export LLVM_DEST_TOP=$DEST_LOCAL/llvm
 
-#Postgres
+# Postgres
 export PG_SRC_ROOT=$SOURCE_ROOT/postgres
 export PG_DEST_DIR=$DEST_LOCAL/postgres
