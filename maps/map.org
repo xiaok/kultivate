@@ -5,7 +5,7 @@
 
 * Lakes
   - Linux Kernel
-
+  - Java
 * Groves
   - GCC
   - LLVM
@@ -15,8 +15,9 @@
   - R
 
 * Giganteum
-  - PostgreSQL
   - Nginx
+  - PostgreSQL
+  - Hadoop
   - Riak
   - Redis
 
