@@ -3,15 +3,9 @@
 
 * BUILD OPENJDK
 ** packages dependencies
+   - m4
    - gawk
    - libxtst-dev
    - libmotif-dev
    - libcups2-dev
    - libasound2-dev
-
-** Prepare Binary Plugs
-   - ~download jdk-6-ea-plug-b16-linux-[arch]-25_nov_2008.jar~
-     from http://download.java.net/openjdk/jdk6/promoted/
-   - ~java -jar jdk-6-ea-plug-b16-linux-[arch]-25_nov_2008.jar~
-   - ~install to /path/to/openjdk~
-   - arch = i586/amd64/...

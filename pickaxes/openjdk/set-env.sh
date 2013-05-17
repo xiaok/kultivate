@@ -1,14 +1,13 @@
 #!/bin/sh
 
-if [ X$OPENJDK = X ]; then
-    export OPENJDK=$HOME/Work/opensrc/openjdk
-fi
+#if [ X$OPENJDK = X ]; then
+#    export OPENJDK=$HOME/Work/opensrc/openjdk
+#fi
 
 if [ X$ANT_HOME = X ]; then
     export ANT_HOME=$HOME/programs/ant
 fi
 
-export LANG=C
 
 if [ X$JAVA_HOME = X ]; then
     export ALT_BOOTDIR=/opt/programs/jdk1.6.0_34
@@ -19,10 +18,12 @@ else
     unset JAVA_HOME
 fi
 
+export LANG=C
 
-export ALT_BINARY_PLUGS_PATH=$OPENJDK/openjdk-binary-plugs
+# unnecessary now
+# export ALT_BINARY_PLUGS_PATH=$OPENJDK/openjdk-binary-plugs
 
-export HOTSPOT_BUILD_JOBS=2
+export HOTSPOT_BUILD_JOBS=4
 export OPENJDK=true
 
 # OPTIONS:

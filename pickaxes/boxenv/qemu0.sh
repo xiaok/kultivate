@@ -29,3 +29,7 @@ export LLVM_DEST_TOP=$DEST_LOCAL/llvm
 # Postgres
 export PG_SRC_ROOT=$SOURCE_ROOT/postgres
 export PG_DEST_DIR=$DEST_LOCAL/postgres
+
+# Java
+export JAVA_HOME=/data0/usr/local/jdk1.6.0_34
+export PATH=$JAVA_HOME/bin:$PATH
