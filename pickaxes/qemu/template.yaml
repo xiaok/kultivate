@@ -16,9 +16,15 @@ hdd:
   hdb: "data0.qcow2"
 
 net:
-  - "nic,model=virtio,macaddr=42:44:00:00:00:00"
-  - "tap,ifname=tap1,script=no"
+  # host side
   #- "user"
+  #- "user,vlan=0,name=devel"
+  #- "tap,ifname=tap1,script=no"
+  #- "socket,vlan=0,listen=:55555"
+  - "vde,sock=/tmp/switch.kdr2"
+  # guest side:
+  - "nic,model=virtio,macaddr=42:44:00:00:00:00"
+  #- "nic,model=virtio,macaddr=42:44:00:00:00:01,vlan=0"
 
 gdb:
   enable: false
