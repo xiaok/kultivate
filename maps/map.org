@@ -11,8 +11,8 @@
   - LLVM
   - Erlang/OTP
   - Lua/LuaJIT
-  - Julia
   - R
+  - Julia
 
 * Giganteum
   - Nginx
@@ -26,8 +26,10 @@
   - Python
 
 * Shrublands
+  - Clojure
   - Scheme
   - CommonLisp
+  - Scala
   - Perl
   - Ruby
 
