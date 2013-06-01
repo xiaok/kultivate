@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export TAP_DEV=tap10
+export TAP_DEV=tap0
 export VDE_USER=kdr2
 export VDE_GROUP=kdr2
 export VDE_COMMDIR=/tmp/switch.kdr2
