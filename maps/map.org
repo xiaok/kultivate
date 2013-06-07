@@ -2,7 +2,6 @@
 #+AUTHOR: KDr2
 
 * Kultivate Map
-
 * Lakes
   - Linux Kernel
   - Java
@@ -38,6 +37,7 @@
 
 * Lumbering Tools
   - Emacs
+  - Qemu
   - SystemTap
   - GDB
   - Valgrind
