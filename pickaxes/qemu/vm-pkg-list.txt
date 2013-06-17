@@ -848,6 +848,7 @@ unzip
 usbutils
 util-linux
 uuid
+uuid-dev
 valgrind
 valgrind-dbg
 vim
