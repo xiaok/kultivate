@@ -16,5 +16,5 @@ vde_switch --daemon \
     --group $VDE_GROUP \
     --tap $TAP_DEV
 
-#ifconfig tap10 192.168.7.1
-#route add -host 192.168.7.22 dev tap10
+#ifconfig tap0 192.168.7.1
+#route add -host 192.168.7.22 dev tap0

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-#  ZMQ_DEST
+#  ZMQ_SRC
 if [ X$ZMQ_SRC = X ]; then
     export ZMQ_SRC=$HOME/Work/opensrc/zeromq/zeromq2-x
 fi
