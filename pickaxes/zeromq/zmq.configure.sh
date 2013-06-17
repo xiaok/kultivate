@@ -16,8 +16,8 @@ if [ X$ZMQ_VERSION = X ]; then
 fi
 
 cd $ZMQ_SRC
-git co $ZMQ_VERSION
-if [ X$? = 0 ]; then
+#git co $ZMQ_VERSION
+if [ X$? = X0 ]; then
     ./configure --prefix=$ZMQ_DEST/$ZMQ_VERSION
 else
     echo ERROR VERSION!
