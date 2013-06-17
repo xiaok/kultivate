@@ -1,8 +1,19 @@
 % xelatex $1
+% http://code.google.com/p/ctex-kit/wiki/UnixFonts
+%
 \documentclass[UTF8,nofonts]{ctexart}
 \setCJKmainfont[ItalicFont={AR PL KaitiM GB}]{AR PL SungtiL GB}% 文鼎宋体和楷书
 \setCJKsansfont{WenQuanYi Zen Hei}% 文泉驿的黑体
 
+\usepackage{catchfile}
+\newcommand\getenv[2][]{%
+  \immediate\write18{kpsewhich --var-value #2 > jobname.tmp}%
+  \CatchFileDef{\temp}{jobname.tmp}{\endlinechar=-1}%
+  \if\relax\detokenize{#1}\relax\temp\else\let#1\temp\fi}
+
+
 \begin{document}
 文章内容
+\getenv[\HOME]{HOME}
+\show\HOME
 \end{document}
