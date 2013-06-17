@@ -74,6 +74,7 @@ fdutils
 feh
 file
 findutils
+fio
 firmware-linux-free
 flex
 fluxbox
@@ -508,6 +509,7 @@ libopenexr-dev
 libopenexr6:amd64
 libopenmpi-dev
 libopenmpi1.3
+libossp-uuid16
 libp11-kit-dev
 libp11-kit0:amd64
 libpam-modules:amd64
@@ -541,6 +543,7 @@ libpthread-stubs0:amd64
 libpthread-stubs0-dev:amd64
 libpython2.7
 libquadmath0:amd64
+librdmacm1
 libreadline-dev:amd64
 libreadline5:amd64
 libreadline6:amd64
@@ -844,6 +847,7 @@ unrar
 unzip
 usbutils
 util-linux
+uuid
 valgrind
 valgrind-dbg
 vim
